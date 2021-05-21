@@ -11,6 +11,8 @@
 		CE2EF5EF2657D498007C14F9 /* GetPostsParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EF5EE2657D498007C14F9 /* GetPostsParams.swift */; };
 		CE2EF5F12657D711007C14F9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EF5F02657D711007C14F9 /* Post.swift */; };
 		CE2EF5F52657D816007C14F9 /* PostCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EF5F42657D816007C14F9 /* PostCreation.swift */; };
+		CE2EF5FA2657E871007C14F9 /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EF5F92657E871007C14F9 /* PostListView.swift */; };
+		CE2EF5FE2657E89C007C14F9 /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EF5FD2657E89C007C14F9 /* PostListViewModel.swift */; };
 		CECF13A72657A28000CA1734 /* NetworkingLayerTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF13A62657A28000CA1734 /* NetworkingLayerTestApp.swift */; };
 		CECF13A92657A28000CA1734 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF13A82657A28000CA1734 /* ContentView.swift */; };
 		CECF13AB2657A28600CA1734 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECF13AA2657A28600CA1734 /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 		CE2EF5EE2657D498007C14F9 /* GetPostsParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsParams.swift; sourceTree = "<group>"; };
 		CE2EF5F02657D711007C14F9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		CE2EF5F42657D816007C14F9 /* PostCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreation.swift; sourceTree = "<group>"; };
+		CE2EF5F92657E871007C14F9 /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
+		CE2EF5FD2657E89C007C14F9 /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
 		CECF13A32657A28000CA1734 /* NetworkingLayerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkingLayerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECF13A62657A28000CA1734 /* NetworkingLayerTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLayerTestApp.swift; sourceTree = "<group>"; };
 		CECF13A82657A28000CA1734 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +85,31 @@
 				CE2EF5F42657D816007C14F9 /* PostCreation.swift */,
 			);
 			path = Body;
+			sourceTree = "<group>";
+		};
+		CE2EF5F62657E828007C14F9 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				CE2EF5F82657E847007C14F9 /* PostCreation */,
+				CE2EF5F72657E83B007C14F9 /* PostList */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		CE2EF5F72657E83B007C14F9 /* PostList */ = {
+			isa = PBXGroup;
+			children = (
+				CE2EF5F92657E871007C14F9 /* PostListView.swift */,
+				CE2EF5FD2657E89C007C14F9 /* PostListViewModel.swift */,
+			);
+			path = PostList;
+			sourceTree = "<group>";
+		};
+		CE2EF5F82657E847007C14F9 /* PostCreation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PostCreation;
 			sourceTree = "<group>";
 		};
 		CECF139A2657A28000CA1734 = {
@@ -140,6 +169,7 @@
 		CECF13B72657A2BB00CA1734 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				CE2EF5F62657E828007C14F9 /* Post */,
 				CECF13A82657A28000CA1734 /* ContentView.swift */,
 			);
 			path = Features;
@@ -276,9 +306,11 @@
 				CECF13C12657A3A800CA1734 /* Client.swift in Sources */,
 				CECF13C42657A4AA00CA1734 /* PostsAPI.swift in Sources */,
 				CECF13A72657A28000CA1734 /* NetworkingLayerTestApp.swift in Sources */,
+				CE2EF5FE2657E89C007C14F9 /* PostListViewModel.swift in Sources */,
 				CE2EF5EB2657D20C007C14F9 /* PostsService.swift in Sources */,
 				CE2EF5EF2657D498007C14F9 /* GetPostsParams.swift in Sources */,
 				CE2EF5F52657D816007C14F9 /* PostCreation.swift in Sources */,
+				CE2EF5FA2657E871007C14F9 /* PostListView.swift in Sources */,
 				CE2EF5F12657D711007C14F9 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

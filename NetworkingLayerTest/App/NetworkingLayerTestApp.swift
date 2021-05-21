@@ -11,7 +11,7 @@ import SwiftUI
 struct NetworkingLayerTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PostListView()
         }
     }
 }
