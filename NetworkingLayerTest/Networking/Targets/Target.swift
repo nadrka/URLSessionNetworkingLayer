@@ -24,6 +24,7 @@ public protocol Target {
     var path: Path { get }
     var headers: Headers { get }
     var queryItems: [URLQueryItem]? { get }
+    var url: URL { get }
     var request: URLRequest { get }
     var decoder: JSONDecoder { get }
     var encoder: JSONEncoder { get }
@@ -40,9 +41,11 @@ extension Target {
     
     var url: URL {
         var components = URLComponents()
+        components.scheme = "https"
         components.host = base
         components.path = path
-        components.queryItems = queryItems ?? []
+        components.queryItems = queryItems
+        print(components)
         
         guard let url = components.url else {
             preconditionFailure("Invalid URL components: \(components)")

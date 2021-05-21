@@ -10,6 +10,6 @@ import Foundation
 protocol PostsTarget: Target {}
 
 extension PostsTarget {
-    var base: String { "https://jsonplaceholder.typicode.com/" }
+    var base: String { "jsonplaceholder.typicode.com" }
 }
 

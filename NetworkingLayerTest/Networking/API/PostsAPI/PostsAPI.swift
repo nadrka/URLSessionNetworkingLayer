@@ -8,7 +8,7 @@
 import Foundation
 
 enum PostsAPI {
-    case getPosts(params: GetPostsParams)
+    case getPosts(params: GetPostsParams?)
     case getPost(id: Int)
     case createPost
 }
@@ -25,14 +25,14 @@ extension PostsAPI: PostsTarget {
     var path: Path {
         switch self {
         case .getPosts,
-             .createPost: return "posts"
-        case .getPost(let id): return "posts/\(id)"
+             .createPost: return "/posts"
+        case .getPost(let id): return "/posts/\(id)"
         }
     }
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .getPosts(let params): return params.prepareQueryItems()
+        case .getPosts(let params): return params?.prepareQueryItems()
         default: return nil
         }
     }

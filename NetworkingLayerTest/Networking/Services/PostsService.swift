@@ -8,7 +8,7 @@
 import Combine
 
 protocol PostsService {
-    func fetchPosts(params: GetPostsParams) -> ResponsePublisher<[Post]>
+    func fetchPosts(params: GetPostsParams?) -> ResponsePublisher<[Post]>
     func fetchPost(with id: Int) -> ResponsePublisher<Post>
     func createPost(_ post: PostCreation) -> ResponsePublisher<Post>
 }
@@ -16,7 +16,7 @@ protocol PostsService {
 final class DefaultPostsService: PostsService {
     let client = Client()
     
-    func fetchPosts(params: GetPostsParams) -> ResponsePublisher<[Post]> {
+    func fetchPosts(params: GetPostsParams? = nil) -> ResponsePublisher<[Post]> {
         let endpoint = PostsAPI.getPosts(params: params)
         return client.execute(target: endpoint, decodingType: [Post].self)
     }
