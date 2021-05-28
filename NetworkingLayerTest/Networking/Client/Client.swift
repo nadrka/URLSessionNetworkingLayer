@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-typealias ResponsePublisher<R: Decodable> = AnyPublisher<R, Error>
+typealias APIResultPublisher<R: Decodable> = AnyPublisher<R, APIError>
 
 /// Enum of API Errors
 enum APIError: Error {
@@ -37,25 +37,11 @@ enum APIError: Error {
 // https://danielbernal.co/writing-a-networking-library-with-combine-codable-and-swift-5/
 // https://medium.com/if-let-swift-programming/generic-networking-layer-using-combine-in-swift-ui-d23574c20368
 
-protocol ClientProtocol: AnyObject {
-    func execute<O: Decodable>(target: Target,
-                               decodingType: O.Type,
-                               queue: DispatchQueue,
-                               retries: Int) -> AnyPublisher<O, Error>
-    
-    func execute<I: Encodable, O: Decodable>(target: Target,
-                                             input: I,
-                                             decodingType: O.Type,
-
-                                             queue: DispatchQueue,
-                                             retries: Int) -> AnyPublisher<O, Error>
-}
-
-final class Client: ClientProtocol {
-    func execute<O: Decodable>(target: Target,
+final class Client<T: Target> {
+    func execute<O: Decodable>(target: T,
                                decodingType: O.Type,
                                queue: DispatchQueue = .main,
-                               retries: Int = 0) -> AnyPublisher<O, Error> {
+                               retries: Int = 0) -> AnyPublisher<O, APIError> {
         let urlRequest = target.request
         
         return URLSession.shared.dataTaskPublisher(for: urlRequest)
@@ -80,11 +66,11 @@ final class Client: ClientProtocol {
             .eraseToAnyPublisher()
     }
     
-    func execute<I: Encodable, O: Decodable>(target: Target,
+    func execute<I: Encodable, O: Decodable>(target: T,
                                              input: I,
                                              decodingType: O.Type,
                                              queue: DispatchQueue = .main,
-                                             retries: Int = 0) -> AnyPublisher<O, Error> {
+                                             retries: Int = 0) -> AnyPublisher<O, APIError> {
         Just(input)
             .encode(encoder: target.encoder)
             .mapError { error in

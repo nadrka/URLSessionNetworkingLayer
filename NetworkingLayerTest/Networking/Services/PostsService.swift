@@ -8,26 +8,23 @@
 import Combine
 
 protocol PostsService {
-    func fetchPosts(params: GetPostsParams?) -> ResponsePublisher<[Post]>
-    func fetchPost(with id: Int) -> ResponsePublisher<Post>
-    func createPost(_ post: PostCreation) -> ResponsePublisher<Post>
+    func fetchPosts(params: GetPostsParams?) -> APIResultPublisher<[Post]>
+    func fetchPost(with id: Int) -> APIResultPublisher<Post>
+    func createPost(_ post: PostCreation) -> APIResultPublisher<Post>
 }
 
 final class DefaultPostsService: PostsService {
-    let client = Client()
+    let client = PostClient()
     
-    func fetchPosts(params: GetPostsParams? = nil) -> ResponsePublisher<[Post]> {
-        let endpoint = PostsAPI.getPosts(params: params)
-        return client.execute(target: endpoint, decodingType: [Post].self)
+    func fetchPosts(params: GetPostsParams? = nil) -> APIResultPublisher<[Post]> {
+        client.execute(target: .getPosts(params: params), decodingType: [Post].self)
     }
     
-    func fetchPost(with id: Int) -> ResponsePublisher<Post> {
-        let endpoint = PostsAPI.getPost(id: id)
-        return client.execute(target: endpoint, decodingType: Post.self)
+    func fetchPost(with id: Int) -> APIResultPublisher<Post> {
+        client.execute(target: .getPost(id: id), decodingType: Post.self)
     }
     
-    func createPost(_ post: PostCreation) -> ResponsePublisher<Post> {
-        let endpoint = PostsAPI.createPost
-        return client.execute(target: endpoint, input: post, decodingType: Post.self)
+    func createPost(_ post: PostCreation) -> APIResultPublisher<Post> {
+        client.execute(target: .createPost, input: post, decodingType: Post.self)
     }
 }

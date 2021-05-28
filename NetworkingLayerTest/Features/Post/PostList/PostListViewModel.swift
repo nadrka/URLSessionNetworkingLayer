@@ -7,25 +7,29 @@
 
 import Combine
 
-class PostListViewModel: ObservableObject {
-    private var disposebag = Set<AnyCancellable>()
-    
+class ObservableViewModel: ObservableObject {
+    var disposeBag = Set<AnyCancellable>()
+}
+
+final class PostListViewModel: ObservableViewModel {
     let postService = DefaultPostsService()
-    @Published var posts = [
-        Post(id: 1, userId: 1, title: "title", body: "Boyd asdasdsadas")
-    ]
+    @Published var posts = [Post]()
     
-    init() {
+    override init() {
+        super.init()
+        
         fetchPosts()
     }
     
     private func fetchPosts(params: GetPostsParams? = nil) {
         postService.fetchPosts(params: params)
-            .sink(receiveCompletion: { _ in },
-                  receiveValue: { [weak self] posts in
-                    self?.posts = posts
-                  })
-            .store(in: &disposebag)
+            .sinkResult { [weak self] result in
+                switch result {
+                case .success(let posts): self?.posts = posts
+                case .failure(let error): print(error)
+                }
+            }
+            .store(in: &disposeBag)
     }
     
     func fetchFilteredPosts() {
@@ -42,9 +46,24 @@ class PostListViewModel: ObservableObject {
                 case .finished: break
                 }
             },
-            receiveValue: { [weak self] post in
+            receiveValue: { _ in
                 print("Post has been succesfully created!")
             })
-            .store(in: &disposebag)
+            .store(in: &disposeBag)
+    }
+}
+
+extension Publisher {
+    func sinkResult(completion: @escaping (Result<Output, Failure>) -> ()) -> AnyCancellable {
+        return sink(
+            receiveCompletion: { result in
+                if case let .failure(error) = result {
+                    completion(.failure(error))
+                }
+            },
+            receiveValue: { output in
+                completion(.success(output))
+            }
+        )
     }
 }

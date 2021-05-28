@@ -13,6 +13,7 @@
 		CE2EF5F52657D816007C14F9 /* PostCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EF5F42657D816007C14F9 /* PostCreation.swift */; };
 		CE2EF5FA2657E871007C14F9 /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EF5F92657E871007C14F9 /* PostListView.swift */; };
 		CE2EF5FE2657E89C007C14F9 /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EF5FD2657E89C007C14F9 /* PostListViewModel.swift */; };
+		CE61BAB126591D1C00B49815 /* APIClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61BAB026591D1C00B49815 /* APIClients.swift */; };
 		CECF13A72657A28000CA1734 /* NetworkingLayerTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF13A62657A28000CA1734 /* NetworkingLayerTestApp.swift */; };
 		CECF13A92657A28000CA1734 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF13A82657A28000CA1734 /* ContentView.swift */; };
 		CECF13AB2657A28600CA1734 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECF13AA2657A28600CA1734 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		CE2EF5F42657D816007C14F9 /* PostCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreation.swift; sourceTree = "<group>"; };
 		CE2EF5F92657E871007C14F9 /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
 		CE2EF5FD2657E89C007C14F9 /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
+		CE61BAB026591D1C00B49815 /* APIClients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClients.swift; sourceTree = "<group>"; };
 		CECF13A32657A28000CA1734 /* NetworkingLayerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkingLayerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECF13A62657A28000CA1734 /* NetworkingLayerTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLayerTestApp.swift; sourceTree = "<group>"; };
 		CECF13A82657A28000CA1734 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				CECF13C02657A3A800CA1734 /* Client.swift */,
+				CE61BAB026591D1C00B49815 /* APIClients.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				CECF13C62657A53200CA1734 /* PostsTarget.swift in Sources */,
 				CECF13C12657A3A800CA1734 /* Client.swift in Sources */,
 				CECF13C42657A4AA00CA1734 /* PostsAPI.swift in Sources */,
+				CE61BAB126591D1C00B49815 /* APIClients.swift in Sources */,
 				CECF13A72657A28000CA1734 /* NetworkingLayerTestApp.swift in Sources */,
 				CE2EF5FE2657E89C007C14F9 /* PostListViewModel.swift in Sources */,
 				CE2EF5EB2657D20C007C14F9 /* PostsService.swift in Sources */,
